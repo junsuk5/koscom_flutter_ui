@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/components/my_second_screen.dart';
+import 'package:flutter_ui/components/my_third_screen.dart';
 
 class MyFirstScreen extends StatelessWidget {
   const MyFirstScreen({super.key});
@@ -16,15 +17,31 @@ class MyFirstScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  print('클릭!!!');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const MySecondScreen()),
-                  );
-                },
-                child: const Text('두번째 화면으로'),
+              const TextField(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      print('클릭!!!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const MySecondScreen()),
+                      );
+                    },
+                    child: const Text('두번째 화면으로'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      print('클릭!!!');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const MyThirdScreen()),
+                      );
+                    },
+                    child: const Text('세번째 화면으로'),
+                  ),
+                ],
               ),
               Container(
                 width: 100,
