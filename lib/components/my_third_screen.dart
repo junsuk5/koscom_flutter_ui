@@ -9,15 +9,12 @@ class MyThirdScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('세번째 화면'),
       ),
-      body: ListView(
-        children: [
-          Image.asset('assets/iu.jpg'),
-          Image.asset('assets/iu.jpg'),
-          Image.asset('assets/iu.jpg'),
-          Image.asset('assets/iu.jpg'),
-          Image.asset('assets/iu.jpg'),
-          Image.asset('assets/iu.jpg'),
-        ],
+      body: ListView.builder(
+        itemCount: 100,
+        itemBuilder: (BuildContext context, int index) {
+          print('$index 번째');
+          return Image.asset('assets/iu.jpg');
+        },
       ),
     );
   }
