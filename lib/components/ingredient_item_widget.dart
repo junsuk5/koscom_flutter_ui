@@ -55,6 +55,9 @@ class RecipeScreen extends StatelessWidget {
               imageUrl: ingredients[index]['imageUrl']!,
               name: ingredients[index]['name'] ?? '이름 없음',
               weight: ingredients[index]['weight'] ?? '0g',
+              onTap: (name) {
+                print('Tap : $name');
+              },
             ),
           );
         },
@@ -67,52 +70,59 @@ class IngredientItemWidget extends StatelessWidget {
   final String imageUrl;
   final String name;
   final String weight;
+  final void Function(String name)? onTap;
 
   const IngredientItemWidget({
     super.key,
     required this.imageUrl,
     required this.name,
     required this.weight,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      height: 100,
-      child: Row(
-        children: [
-          const SizedBox(width: 20),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Image.asset(
-              imageUrl,
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        onTap?.call(name);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        height: 100,
+        child: Row(
+          children: [
+            const SizedBox(width: 20),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                imageUrl,
+                width: 60,
+                height: 60,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SizedBox(width: 20),
-          Text(
-            name,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
+            const SizedBox(width: 20),
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          const Spacer(),
-          Text(
-            weight,
-            style: const TextStyle(
-              fontSize: 25,
-              color: Colors.grey,
+            const Spacer(),
+            Text(
+              weight,
+              style: const TextStyle(
+                fontSize: 25,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          const SizedBox(width: 20),
-        ],
+            const SizedBox(width: 20),
+          ],
+        ),
       ),
     );
   }
