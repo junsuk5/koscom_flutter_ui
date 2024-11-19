@@ -17,7 +17,10 @@ class MyFirstScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const TextField(),
+              const SizedBox(
+                width: 100,
+                child: TextField(),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -26,7 +29,8 @@ class MyFirstScreen extends StatelessWidget {
                       print('클릭!!!');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const MySecondScreen()),
+                        MaterialPageRoute(
+                            builder: (_) => const MySecondScreen()),
                       );
                     },
                     child: const Text('두번째 화면으로'),
@@ -36,7 +40,8 @@ class MyFirstScreen extends StatelessWidget {
                       print('클릭!!!');
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => const MyThirdScreen()),
+                        MaterialPageRoute(
+                            builder: (_) => const MyThirdScreen()),
                       );
                     },
                     child: const Text('세번째 화면으로'),

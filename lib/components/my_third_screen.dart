@@ -13,7 +13,27 @@ class MyThirdScreen extends StatelessWidget {
         itemCount: 100,
         itemBuilder: (BuildContext context, int index) {
           print('$index 번째');
-          return Image.asset('assets/iu.jpg');
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 5,
+            ),
+            child: Stack(
+              children: [
+                Image.asset('assets/iu.jpg'),
+                const Align(
+                  alignment: Alignment.topRight,
+                  child: Text('아이유'),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          print('+');
         },
       ),
     );
