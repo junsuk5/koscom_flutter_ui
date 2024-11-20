@@ -21,7 +21,7 @@ class Recipe {
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
     return Recipe(
-      category: json['category'] as String,
+      category: json['category'] ?? '카테고리 없음',
       id: json['id'] as int,
       name: json['name'] as String,
       image: json['image'] as String,
@@ -46,6 +46,11 @@ class Recipe {
       'ingredients': ingredients.map((e) => e.toJson()).toList(),
     };
   }
+
+  @override
+  String toString() {
+    return 'Recipe{category: $category, id: $id, name: $name, image: $image, chef: $chef, time: $time, rating: $rating, ingredients: $ingredients}';
+  }
 }
 
 class RecipeIngredient {
@@ -69,6 +74,11 @@ class RecipeIngredient {
       'ingredient': ingredient.toJson(),
       'amount': amount,
     };
+  }
+
+  @override
+  String toString() {
+    return 'RecipeIngredient{ingredient: $ingredient, amount: $amount}';
   }
 }
 
@@ -97,5 +107,10 @@ class Ingredient {
       'name': name,
       'image': image,
     };
+  }
+
+  @override
+  String toString() {
+    return 'Ingredient{id: $id, name: $name, image: $image}';
   }
 }
