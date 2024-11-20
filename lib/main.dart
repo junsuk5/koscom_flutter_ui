@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/components/my_first_screen.dart';
 
+import 'presentation/recipe_list_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
-      home: const MyFirstScreen(),
+      home: const RecipeListScreen(),
     );
   }
 }
