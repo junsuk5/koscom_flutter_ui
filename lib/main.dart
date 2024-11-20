@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/components/my_first_screen.dart';
+import 'package:flutter_ui/presentation/recipe_list_view_model.dart';
 
 import 'presentation/recipe_list_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final viewModel = RecipeListViewModel();
+
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -19,7 +22,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
         useMaterial3: true,
       ),
-      home: const RecipeListScreen(),
+      home: ListenableBuilder(
+        listenable: viewModel,
+        builder: (context, widget) {
+          return RecipeListScreen(
+            recipes: viewModel.recipes,
+            isLoading: viewModel.isLoading,
+          );
+        },
+      ),
     );
   }
 }
