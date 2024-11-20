@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/components/my_first_screen.dart';
+import 'package:flutter_ui/data/recipe_repository.dart';
 import 'package:flutter_ui/presentation/recipe_list_view_model.dart';
 
 import 'presentation/recipe_list_screen.dart';
@@ -9,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final viewModel = RecipeListViewModel();
+  final viewModel = RecipeListViewModel(RecipeRepositoryImpl());
 
   MyApp({super.key});
 

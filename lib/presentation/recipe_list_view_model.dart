@@ -4,7 +4,7 @@ import 'package:flutter_ui/presentation/recipe_list_state.dart';
 import '../data/recipe_repository.dart';
 
 class RecipeListViewModel with ChangeNotifier {
-  final _repository = RecipeRepository();
+  final RecipeRepository _repository;
 
   RecipeListState _state = RecipeListState(
     recipes: [],
@@ -13,7 +13,7 @@ class RecipeListViewModel with ChangeNotifier {
 
   RecipeListState get state => _state;
 
-  RecipeListViewModel() {
+  RecipeListViewModel(this._repository) {
     loadData();
   }
 
