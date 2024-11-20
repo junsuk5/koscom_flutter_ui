@@ -1,8 +1,8 @@
 import 'model/recipe_models.dart';
 
-void main() {
+void main() async {
   final repository = RecipeRepository();
-  final recipes = repository.getRecipes();
+  final recipes = await repository.getRecipes();
   print(recipes);
 }
 
@@ -305,7 +305,9 @@ class RecipeRepository {
     ]
   };
 
-  List<Recipe> getRecipes() {
+  Future<List<Recipe>> getRecipes() async {
+    await Future.delayed(const Duration(seconds: 1));
+
     final recipesJsonList = _recipeData['recipes'] as List;
     return recipesJsonList.map((e) => Recipe.fromJson(e)).toList();
   }
