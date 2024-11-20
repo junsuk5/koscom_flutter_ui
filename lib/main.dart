@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
       home: ListenableBuilder(
         listenable: viewModel,
         builder: (context, widget) {
-          return RecipeListScreen(
-            recipes: viewModel.recipes,
-            isLoading: viewModel.isLoading,
-          );
+          return RecipeListScreen(state: viewModel.state);
         },
       ),
     );

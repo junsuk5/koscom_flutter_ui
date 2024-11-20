@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-
-import '../data/model/recipe_models.dart';
+import 'package:flutter_ui/presentation/recipe_list_state.dart';
 
 class RecipeListScreen extends StatelessWidget {
-  final List<Recipe> recipes;
-  final bool isLoading;
+  final RecipeListState state;
 
   const RecipeListScreen({
     super.key,
-    required this.recipes,
-    required this.isLoading,
+    required this.state,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isLoading
+      body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: recipes.length,
+              itemCount: state.recipes.length,
               itemBuilder: (_, index) {
-                final recipe = recipes[index];
+                final recipe = state.recipes[index];
                 return ListTile(
                   title: Text(recipe.name),
                   subtitle: Text(recipe.chef),
