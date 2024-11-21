@@ -26,5 +26,6 @@ class RecipeListViewModel with ChangeNotifier {
       isLoading: false,
     );
     notifyListeners();
+    print('loadData');
   }
 }

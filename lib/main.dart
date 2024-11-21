@@ -26,7 +26,12 @@ class MyApp extends StatelessWidget {
       home: ListenableBuilder(
         listenable: viewModel,
         builder: (context, widget) {
-          return RecipeListScreen(state: viewModel.state);
+          return RecipeListScreen(
+            state: viewModel.state,
+            onRefresh: () {
+              viewModel.loadData();
+            },
+          );
         },
       ),
     );
